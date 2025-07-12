@@ -1,0 +1,6 @@
+rootProject.name = 'shopverse'
+
+include 'common-lib'
+
+include 'user-service'
+include 'analytic-service'

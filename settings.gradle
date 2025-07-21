@@ -1,6 +1,12 @@
 rootProject.name = 'shopverse'
 
 include 'common-lib'
+include 'api-gateway'
+include 'analytic-service'
 
 include 'user-service'
-include 'analytic-service'
+include 'order-service'
+include 'inventory-service'
+include 'product-service'
+include 'payment-service'
+include 'notification-service'

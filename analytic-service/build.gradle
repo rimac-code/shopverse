@@ -1,11 +1,41 @@
-plugins {
-	id 'org.springframework.boot'
-}
-
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	// Core Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// Observability
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+
+	// Kafka
 	implementation 'org.springframework.kafka:spring-kafka'
+
+	// DB
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+
+	// Redis (user-service only, or if needed later)
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// JWT (user-service only, or reusable via common-lib)
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// Lombok (add to both if used anywhere)
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// Dev-only
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
 }

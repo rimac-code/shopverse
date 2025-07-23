@@ -48,3 +48,5 @@ dump.rdb
 
 # VS Code (if you happen to use it)
 .vscode/
+
+.DS_Store

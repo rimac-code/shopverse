@@ -1,0 +1,13 @@
+dependencies {
+	// Spring Cloud Config Server
+	implementation 'org.springframework.cloud:spring-cloud-config-server'
+
+	// Eureka Client to register with discovery-server
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	// Actuator for observability/monitoring
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

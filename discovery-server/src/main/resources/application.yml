@@ -1,0 +1,20 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discovery-server
+
+eureka:
+  client:
+    register-with-eureka: false   # Eureka server doesn't register itself
+    fetch-registry: false         # It doesn't need to fetch registry from others
+  server:
+    enable-self-preservation: false   # Optional for dev — disables delayed eviction
+    wait-time-in-ms-when-sync-empty: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

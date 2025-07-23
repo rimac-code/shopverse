@@ -4,21 +4,29 @@ server:
 spring:
   application:
     name: config-server
-
   cloud:
     config:
       server:
         git:
           uri: https://github.com/rimac-code/shopverse-config-repo
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
           default-label: main
           clone-on-start: true
+          basedir: ./local-config-repo
+  profiles:
+    active: native
 
+encrypt:
+  key-store:
+    location: ${KEYSTORE_PATH}
+    password: ${KEYSTORE_PASSWORD}
+    alias: configserver
+    secret: ${KEYSTORE_SECRET}
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-    fetch-registry: true
-    register-with-eureka: true
 
 management:
   endpoints:

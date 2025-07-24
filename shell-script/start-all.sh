@@ -1,35 +1,30 @@
 #!/bin/bash
 
-# Load environment
-# source /Users/poornima/Documents/secure/env-config-shopverse.sh
-
-cd /Users/poornima/Documents/Idea/shopverse || exit
-
-mkdir -p logs
+# Clean old PID file if it exists
 rm -f shopverse_pids.txt
 
-start_service() {
-  local service_name=$1
-  local service_log="logs/${service_name}.log"
+echo "Starting all services..."
 
-  echo "Starting $service_name..."
-  ./gradlew ":$service_name:bootRun" > "$service_log" 2>&1 &
-  echo $! >> shopverse_pids.txt
-}
+SERVICES=(
+  "discovery-server"
+  "config-server"
+  "api-gateway"
+  "user-service"
+  "order-service"
+  "product-service"
+  "payment-service"
+  "inventory-service"
+  "notification-service"
+  "analytic-service"
+)
 
-start_service discovery-server
-sleep 10
+for service in "${SERVICES[@]}"
+do
+  echo "Starting $service..."
+  nohup java -jar ../$service/build/libs/$service-*.jar > ../$service/log.txt 2>&1 &
+  PID=$!
+  echo "$PID" >> shopverse_pids.txt
+  echo "$service started with PID $PID"
+done
 
-start_service config-server
-sleep 10
-
-start_service api-gateway
-start_service user-service
-start_service order-service
-start_service product-service
-start_service payment-service
-start_service inventory-service
-start_service notification-service
-start_service analytic-service
-
-echo "All services started. PIDs saved to shopverse_pids.txt"
+echo "✅ All services started. PIDs saved to shopverse_pids.txt"

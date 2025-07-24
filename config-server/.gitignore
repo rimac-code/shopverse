@@ -1,5 +1,8 @@
-/local-config-repo/
+# Service logs
+**/log.txt
 
+# Gradle bootRun PID file
+shopverse_pids.txt
 
 HELP.md
 .gradle

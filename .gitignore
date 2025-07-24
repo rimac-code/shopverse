@@ -50,3 +50,9 @@ dump.rdb
 .vscode/
 
 .DS_Store
+
+# Service logs
+**/log.txt
+
+# Gradle bootRun PID file
+shopverse_pids.txt

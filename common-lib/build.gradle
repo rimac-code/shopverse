@@ -1,3 +1,17 @@
+// common-lib/build.gradle
+
+plugins {
+    id 'java-library'
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    enabled = false
+}
+
 dependencies {
     // Lombok for DTOs, utils
     compileOnly 'org.projectlombok:lombok'
@@ -16,3 +30,4 @@ dependencies {
     // Validation annotations
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
 }
+

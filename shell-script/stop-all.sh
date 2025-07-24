@@ -1,20 +1,19 @@
 #!/bin/bash
 
-echo "Stopping all services..."
-
 if [ ! -f shopverse_pids.txt ]; then
-  echo "⚠️ No PID file found. Nothing to stop."
-  exit 0
+  echo "❌ No shopverse_pids.txt found. Nothing to stop."
+  exit 1
 fi
 
+echo "🛑 Stopping all Shopverse services..."
+
 while read pid; do
-  if kill -0 $pid 2>/dev/null; then
-    echo "Killing process $pid"
-    kill -9 $pid
+  if kill "$pid" 2>/dev/null; then
+    echo "🔴 Stopped process $pid"
   else
-    echo "PID $pid is not running"
+    echo "⚠️ Could not stop process $pid (may already be dead)"
   fi
 done < shopverse_pids.txt
 
-rm shopverse_pids.txt
-echo "🛑 All services stopped."
+rm -f shopverse_pids.txt
+echo "✅ All services stopped and PID file removed."

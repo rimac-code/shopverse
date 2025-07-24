@@ -7,7 +7,7 @@ spring:
         git:
           uri: https://github.com/rimac-code/shopverse-config-repo
           username: ${GIT_USERNAME}
-          password: ${GIT_PASSWORD}
+          password: ${GIT_PASSWORD_CONFIG_REPO}
           default-label: main
           clone-on-start: true
 server:

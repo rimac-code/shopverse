@@ -2,7 +2,7 @@ dependencies {
 	// Core Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
@@ -13,7 +13,7 @@ dependencies {
 	implementation 'org.springframework.kafka:spring-kafka'
 
 	// DB
-//	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.3.0'
 
 	// Redis (user-service only, or if needed later)
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
